@@ -1,4 +1,5 @@
 <?php
+use App\Http\Controllers\PageController;
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
@@ -114,7 +115,5 @@ Route::get('/send-test-email', function () {
     return 'Test email sent!';
 
 
-Route::get('/about', function () {
-    return view('about'); // Matches the about.blade.php file in resources/views
-})->name('about');
+Route::view('/test-about', 'user.about')->name('test-about');
 });
