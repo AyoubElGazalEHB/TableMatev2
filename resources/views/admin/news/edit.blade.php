@@ -7,8 +7,8 @@
     @include('admin.css')
 </head>
 <body>
+    @include('admin.header')
     <div class="container mt-5">
-        @include('admin.header')
         <h1>Edit News</h1>
         <form action="{{ route('admin.news.update', $news->id) }}" method="POST" enctype="multipart/form-data">
             @csrf

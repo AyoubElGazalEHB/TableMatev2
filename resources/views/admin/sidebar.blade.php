@@ -15,63 +15,73 @@
     <!-- Nav Item - add tables -->
     <li class="nav-item">
         <a class="nav-link" href="{{url('add_table_view')}}">
-            <i class="fas fa-fw fa-chair"></i> <!-- Changed icon to 'fa-chair' -->
-            <span>Add Tables</span></a>
+            <i class="fas fa-fw fa-chair"></i>
+            <span>Add Tables</span>
+        </a>
     </li>
 
     <!-- Nav Item - booking -->
     <li class="nav-item">
         <a class="nav-link" href="{{url('booking')}}">
-            <i class="fas fa-fw fa-book-open"></i> <!-- Changed icon to 'fa-book-open' -->
-            <span>Reservation</span></a>
+            <i class="fas fa-fw fa-book-open"></i>
+            <span>Reservation</span>
+        </a>
     </li>
 
     <!-- Nav Item - manage tables -->
     <li class="nav-item">
         <a class="nav-link" href="{{url('tables')}}">
-            <i class="fas fa-fw fa-table"></i> <!-- Changed icon to 'fa-table' -->
-            <span>Table Management</span></a>
+            <i class="fas fa-fw fa-table"></i>
+            <span>Table Management</span>
+        </a>
     </li>
 
-                <!-- Nav Item - admin rights -->
-            <li class="nav-item">
-                <a class="nav-link" href="{{url('users_rights')}}">
-                    <i class="fas fa-fw fa-user"></i>
-                    <span>User Rights</span></a>
-            </li>
+    <!-- Nav Item - admin rights -->
+    <li class="nav-item">
+        <a class="nav-link" href="{{url('users_rights')}}">
+            <i class="fas fa-fw fa-user"></i>
+            <span>User Rights</span>
+        </a>
+    </li>
 
+    <!-- Nav Item - Contact forms -->
+    <li class="nav-item">
+        <a class="nav-link" href="{{url('contact_forms')}}">
+            <i class="fas fa-fw fa-phone"></i>
+            <span>Contact Forms</span>
+        </a>
+    </li>
 
-            <!-- Nav Item - Contact forms -->
-            <li class="nav-item">
-                <a class="nav-link" href="{{url('contact_forms')}}">
-                    <i class="fas fa-fw fa-phone"></i>
-                    <span>Contact Forms</span></a>
-            </li>
+    <!-- Nav Item - FAQ's Category -->
+    <li class="nav-item">
+        <a class="nav-link" href="{{url('faq_managment')}}">
+            <i class="fas fa-fw fa-folder"></i>
+            <span>FAQ Category</span>
+        </a>
+    </li>
 
+    <!-- Nav Item - FAQ's Items -->
+    <li class="nav-item">
+        <a class="nav-link" href="{{url('faqItem_managment')}}">
+            <i class="fas fa-fw fa-question"></i>
+            <span>FAQ Items</span>
+        </a>
+    </li>
 
- <!-- Nav Item - FAQ's Category -->
-            <li class="nav-item">
-                <a class="nav-link" href="{{url('faq_managment')}}">
-                    <i class="fas fa-fw fa-folder"></i>
-                    <span>FAQ Category</span></a>
-            </li>
+    <!-- Nav Item - News Management -->
+    <li class="nav-item">
+    <a class="nav-link" href="{{ route('admin.news.index') }}">
+        <i class="fas fa-newspaper"></i>
+        <span>News Management</span>
+    </a>
+</li>
 
- <!-- Nav Item - FAQ's Items -->
-            <li class="nav-item">
-                <a class="nav-link" href="{{url('faqItem_managment')}}">
-                    <i class="fas fa-fw fa-question"></i>
-                    <span>FAQ Items</span></a>
-            </li>
+    <!-- Divider -->
+    <hr class="sidebar-divider d-none d-md-block">
 
-            <!-- Divider -->
-            <hr class="sidebar-divider d-none d-md-block">
-
-            <!-- Sidebar Toggler (Sidebar) -->
-            <div class="text-center d-none d-md-inline">
-                <button class="rounded-circle border-0" id="sidebarToggle"></button>
-            </div>
-
-            
-
-        </ul>
-        <!-- End of Sidebar -->
+    <!-- Sidebar Toggler (Sidebar) -->
+    <div class="text-center d-none d-md-inline">
+        <button class="rounded-circle border-0" id="sidebarToggle"></button>
+    </div>
+</ul>
+<!-- End of Sidebar -->

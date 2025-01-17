@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 </head>
 <body>
+    @include('user.header')
     <div class="container mt-5">
         <h1>Latest News</h1>
         <div class="row">

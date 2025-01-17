@@ -1,5 +1,4 @@
 <?php
-use App\Http\Controllers\PageController;
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
@@ -18,6 +17,7 @@ use Illuminate\Support\Facades\Mail;
 /* Public Routes */
 Route::get('/', [HomeController::class, 'index']);
 Route::get('/home', [HomeController::class, 'redirect']);
+Route::view('/about', 'user.about')->name('about');
 
 /* User Profile */
 Route::get('/user/profile/{id}', [UserController::class, 'profile'])->name('user.profile');
@@ -90,12 +90,13 @@ Route::get('/editcategory/{id}', [FAQCategoryController::class, 'editcategory'])
 Route::get('/delete_category/{id}', [FAQCategoryController::class, 'delete_category']);
 Route::post('/changing_category/{id}', [FAQCategoryController::class, 'changing_category']);
 
-/* News (Public) */
+/* News Routes */
+// User News
 Route::get('/news', [NewsController::class, 'index'])->name('news.index');
 Route::get('/news/{id}', [NewsController::class, 'show'])->name('news.show');
 Route::post('/news/{id}/comment', [NewsController::class, 'addComment'])->name('news.comment');
 
-/* News (Admin) */
+// Admin News Management
 Route::middleware(['auth', 'admin'])->group(function () {
     Route::get('/admin/news', [NewsController::class, 'adminIndex'])->name('admin.news.index');
     Route::get('/admin/news/create', [NewsController::class, 'create'])->name('admin.news.create');
@@ -105,6 +106,9 @@ Route::middleware(['auth', 'admin'])->group(function () {
     Route::delete('/admin/news/{id}', [NewsController::class, 'destroy'])->name('admin.news.destroy');
 });
 
+/* Test About Route */
+Route::view('/test-about', 'user.about')->name('test-about');
+
 /* Send Test Email */
 Route::get('/send-test-email', function () {
     Mail::raw('This is a test email from Laravel!', function ($message) {
@@ -113,7 +117,4 @@ Route::get('/send-test-email', function () {
     });
 
     return 'Test email sent!';
-
-
-Route::view('/test-about', 'user.about')->name('test-about');
 });

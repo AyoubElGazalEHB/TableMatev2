@@ -55,7 +55,7 @@ x
             <li class="list-group-item">The templates that inspired us: <a href="https://themewagon.com/themes/free-html5-responsive-hotel-website-template-star-hotels/" target="_blank">user-template</a>, <a href="https://startbootstrap.com/theme/sb-admin-2" target="_blank">admin-template</a></li>
             <li class="list-group-item">Helpful resources we used: <a href="https://www.youtube.com/WebTechKnowledge" target="_blank">YouTube</a>, <a href="https://chat.openai.com" target="_blank">ChatGPT</a></li>
             <li class="list-group-item">Documentation that guided our development: <a href="https://laravel.com/docs/10.x/routing" target="_blank">Laravel</a>, <a href="https://jetstream.laravel.com/introduction.html" target="_blank">Jetstream</a></li>
-            <li class="list-group-item">Courses we followed: <a href="https://canvas.ehb.be/courses/34801" target="_blank">Backend Web Development</a></li>
+            <li class="list-group-item">Courses we followed: <a href="https://canvas.ehb.be/courses/40595" target="_blank">Backend Web Development</a></li>
             <li class="list-group-item">GitHub Repository: <a href="https://github.com/AyoubElGazalEHB/TableMatev2.git" target="_blank">TableMate on GitHub</a></li>
         </ul>
     </div>
