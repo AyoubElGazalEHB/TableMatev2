@@ -11,6 +11,8 @@ use App\Http\Controllers\ReservationController;
 use App\Http\Controllers\TableManagingController;
 use App\Http\Controllers\TableController;
 use App\Http\Controllers\UserController;
+use Illuminate\Support\Facades\Mail;
+
 
 /* Public Routes */
 Route::get('/', [HomeController::class, 'index']);
@@ -65,6 +67,7 @@ Route::post('/add_contactform', [ContactController::class, 'add_contactform']);
 /* Contact Management (Admin Panel) */
 Route::get('/contact_forms', [ContactController::class, 'contact_forms']);
 Route::get('/delete_forms/{id}', [ContactController::class, 'delete_forms']);
+Route::post('/respond_contact/{id}', [ContactController::class, 'respond']); // This route handles the admin response
 
 /* FAQ (User Panel) */
 Route::get('/faq', [FAQItemController::class, 'display'])->name('faq.display');
@@ -84,3 +87,12 @@ Route::post('/add_category', [FAQCategoryController::class, 'add_category']);
 Route::get('/editcategory/{id}', [FAQCategoryController::class, 'editcategory']);
 Route::get('/delete_category/{id}', [FAQCategoryController::class, 'delete_category']);
 Route::post('/changing_category/{id}', [FAQCategoryController::class, 'changing_category']);
+
+Route::get('/send-test-email', function () {
+    Mail::raw('This is a test email from Laravel!', function ($message) {
+        $message->to('recipient@example.com')
+                ->subject('Test Email from Laravel');
+    });
+
+    return 'Test email sent!';
+});
