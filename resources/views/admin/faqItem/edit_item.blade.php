@@ -2,123 +2,90 @@
 <html lang="en">
 
 <head>
-
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
+    <meta name="description" content="Edit FAQ Item">
+    <meta name="author" content="Admin">
 
-    <title>Edit Items</title>
+    <title>Edit FAQ Item</title>
 
-    <!-- Custom fonts for this template-->
-<base href="/public">
-@include('admin.css')
+    <base href="/public">
+    @include('admin.css')
 </head>
 
 <body id="page-top">
-
-    <!-- Page Wrapper -->
     <div id="wrapper">
+        @include('admin.sidebar')
 
-   <!-- Sidebar -->
-@include('admin.sidebar')
-    <!-- Sidebar -->
-
-        <!-- Content Wrapper -->
         <div id="content-wrapper" class="d-flex flex-column">
-
-            <!-- Main Content -->
             <div id="content">
+                @include('admin.header')
 
-
-@include('admin.header')
-
-                <!-- Begin Page Content -->
                 <div class="container-fluid">
+                    <h1 class="h3 mb-4 text-gray-800">Edit FAQ Item</h1>
 
-@if(session()->has('message'))
+                    @if(session()->has('message'))
+                        <div class="alert alert-success">
+                            <button type="button" class="close" data-dismiss="alert">x</button>
+                            {{ session()->get('message') }}
+                        </div>
+                    @endif
 
-<div class="alert alert-success">
-<button type="button" class="close" data-dismiss="alert">
-x
-</button>
+                    @if ($errors->any())
+                        <div class="alert alert-danger">
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
 
-{{session()->get('message')}}
-</div>
+                    <form action="{{ url('changing_item', $data->id) }}" method="POST">
+                        @csrf
+                        @method('POST') <!-- Updated to use POST -->
+                        <div class="form-group">
+                            <label for="faq_categories_id">Category</label>
+                            <select name="faq_categories_id" id="faq_categories_id" class="form-control" required>
+                                @foreach($categories as $category)
+                                    <option value="{{ $category->id }}" {{ $data->faq_categories_id == $category->id ? 'selected' : '' }}>
+                                        {{ $category->title }}
+                                    </option>
+                                @endforeach
+                            </select>
+                        </div>
 
-@endif
+                        <div class="form-group">
+                            <label for="question">Question</label>
+                            <input type="text" name="question" id="question" class="form-control" value="{{ $data->question }}" required>
+                        </div>
 
-<h1>Edit Items:</h1>
+                        <div class="form-group">
+                            <label for="answer">Answer</label>
+                            <textarea name="answer" id="answer" class="form-control" rows="5" required>{{ $data->answer }}</textarea>
+                        </div>
 
-<form action="{{url('changing_item', $data->id)}}" method="POST" enctype="multipart/form-data">
-
-@csrf
-
-            <div style="padding:10px">
-                <label for="">Category</label>
-                <select name="faq_categories_id" required="" value="">
-
-                @foreach($categories as $category)
-
-<option value="{{ $category->id }}" {{ $data->faq_categories_id == $category->id ? 'selected' : '' }}>
-                {{ $category->title }}
-            </option>              
-
-            @endforeach
-
-                </select>
-            </div>
-
-
-            <div style="padding:10px">
-                <label for="">Question</label>
-                <input type="text" name="question" required="" value="{{$data->question}}">
-            </div>
-
-            <div style="padding:10px">
-                <label for="">Answer</label>
-                <input type="text" name="answer" required="" value="{{$data->answer}}">
-            </div>
-
-
-
-             <div style="padding:10px">
-            <input type="submit" style="color:black;" class="btn btn-primary" required="">           
-            </div>
-
-
-</form>
-
+                        <button type="submit" class="btn btn-primary">Update Item</button>
+                        <a href="{{ url('faqItem_management') }}" class="btn btn-secondary">Cancel</a>
+                    </form>
                 </div>
-
             </div>
 
-            <!-- Footer -->
             <footer class="sticky-footer bg-white">
                 <div class="container my-auto">
                     <div class="copyright text-center my-auto">
-                        <span>Copyright &copy; Zakintosh 2023</span>
+                        <span>&copy; TableMate {{ date('Y') }}</span>
                     </div>
                 </div>
             </footer>
-            <!-- End of Footer -->
-
         </div>
-        <!-- End of Content Wrapper -->
-
     </div>
-    <!-- End of Page Wrapper -->
 
-    <!-- Scroll to Top Button-->
     <a class="scroll-to-top rounded" href="#page-top">
         <i class="fas fa-angle-up"></i>
     </a>
 
-
-    <!-- Bootstrap core JavaScript-->
- @include('admin.script')
-
+    @include('admin.script')
 </body>
-
 </html>
