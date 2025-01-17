@@ -13,6 +13,8 @@ use App\Http\Controllers\TableController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\NewsController;
 use Illuminate\Support\Facades\Mail;
+use App\Http\Controllers\UserNewsController;
+use App\Http\Controllers\AdminNewsController;
 
 /* Public Routes */
 Route::get('/', [HomeController::class, 'index']);
@@ -68,7 +70,7 @@ Route::post('/add_contactform', [ContactController::class, 'add_contactform']);
 /* Contact Management (Admin Panel) */
 Route::get('/contact_forms', [ContactController::class, 'contact_forms']);
 Route::get('/delete_forms/{id}', [ContactController::class, 'delete_forms']);
-Route::post('/respond_contact/{id}', [ContactController::class, 'respond']); // Admin can respond to contact forms
+Route::post('/respond_contact/{id}', [ContactController::class, 'respond']);
 
 /* FAQ (User Panel) */
 Route::get('/faq', [FAQItemController::class, 'display'])->name('faq.display');
@@ -90,24 +92,20 @@ Route::get('/editcategory/{id}', [FAQCategoryController::class, 'editcategory'])
 Route::get('/delete_category/{id}', [FAQCategoryController::class, 'delete_category']);
 Route::post('/changing_category/{id}', [FAQCategoryController::class, 'changing_category']);
 
-/* News Routes */
-// User News
-Route::get('/news', [NewsController::class, 'index'])->name('news.index');
-Route::get('/news/{id}', [NewsController::class, 'show'])->name('news.show');
-Route::post('/news/{id}/comment', [NewsController::class, 'addComment'])->name('news.comment');
+/* User Routes for News */
+Route::get('/news', [UserNewsController::class, 'index'])->name('news.index');
+Route::get('/news/{id}', [UserNewsController::class, 'show'])->name('news.show');
 
-// Admin News Management
+/* Admin Routes for News Management */
 Route::middleware(['auth', 'admin'])->group(function () {
-    Route::get('/admin/news', [NewsController::class, 'adminIndex'])->name('admin.news.index');
-    Route::get('/admin/news/create', [NewsController::class, 'create'])->name('admin.news.create');
-    Route::post('/admin/news', [NewsController::class, 'store'])->name('admin.news.store');
-    Route::get('/admin/news/{id}/edit', [NewsController::class, 'edit'])->name('admin.news.edit');
-    Route::post('/admin/news/{id}', [NewsController::class, 'update'])->name('admin.news.update');
-    Route::delete('/admin/news/{id}', [NewsController::class, 'destroy'])->name('admin.news.destroy');
+    Route::get('/admin/news', [AdminNewsController::class, 'index'])->name('admin.news.index');
+    Route::get('/admin/news/create', [AdminNewsController::class, 'create'])->name('admin.news.create');
+    Route::post('/admin/news', [AdminNewsController::class, 'store'])->name('admin.news.store');
+    Route::get('/admin/news/{id}/edit', [AdminNewsController::class, 'edit'])->name('admin.news.edit');
+    Route::post('/admin/news/{id}', [AdminNewsController::class, 'update'])->name('admin.news.update');
+    Route::delete('/admin/news/{id}', [AdminNewsController::class, 'destroy'])->name('admin.news.destroy');
 });
 
-/* Test About Route */
-Route::view('/test-about', 'user.about')->name('test-about');
 
 /* Send Test Email */
 Route::get('/send-test-email', function () {
