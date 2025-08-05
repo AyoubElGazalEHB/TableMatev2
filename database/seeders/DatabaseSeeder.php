@@ -83,6 +83,8 @@ class DatabaseSeeder extends Seeder
             ['id' => 1, 'tableNumber' => '101', 'name' => 'Alice', 'phone' => '123456789', 'email' => 'alice@example.com', 'checkin' => '2025-01-20', 'checkout' => '2025-01-21', 'status' => 'Approved', 'created_at' => now(), 'updated_at' => now()],
         ]);
 
+        $this->call(RoleSeeder::class);
+
         $this->command->info('Database seeded successfully!');
     }
 }
