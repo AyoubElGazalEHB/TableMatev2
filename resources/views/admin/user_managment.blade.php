@@ -50,7 +50,12 @@ x
 
 
     <div class="container mt-5 mb-5">
-        <h1>User Rights:</h1>
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <h1>User Rights:</h1>
+            <a href="{{ url('/create-user') }}" class="btn btn-primary">
+                <i class="fas fa-user-plus"></i> Create New User
+            </a>
+        </div>
 
         <table class="table table-bordered mt-4">
             <thead>

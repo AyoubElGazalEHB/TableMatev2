@@ -52,6 +52,14 @@
         </a>
     </li>
 
+    <!-- Nav Item - create user -->
+    <li class="nav-item">
+        <a class="nav-link" href="{{url('create-user')}}">
+            <i class="fas fa-fw fa-user-plus"></i>
+            <span>Create User</span>
+        </a>
+    </li>
+
     <!-- Nav Item - Contact forms -->
     <li class="nav-item">
         <a class="nav-link" href="{{url('contact_forms')}}">
