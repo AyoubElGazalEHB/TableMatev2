@@ -15,6 +15,7 @@ use App\Http\Controllers\NewsController;
 use Illuminate\Support\Facades\Mail;
 use App\Http\Controllers\UserNewsController;
 use App\Http\Controllers\AdminNewsController;
+use App\Http\Controllers\RoleController;
 
 /* Public Routes */
 Route::get('/', [HomeController::class, 'index']);
@@ -49,6 +50,11 @@ Route::post('/changing_table/{id}', [TableManagingController::class, 'changing_t
 Route::get('/users_rights', [AdminController::class, 'users_rights']);
 Route::get('/promote_user/{id}', [AdminController::class, 'promote_user']);
 Route::get('/discard_user/{id}', [AdminController::class, 'discard_user']);
+
+/* Role Management (Admin Panel) */
+Route::get('/roles', [RoleController::class, 'index']);
+Route::post('/assign-role/{userId}', [RoleController::class, 'assignRole']);
+Route::delete('/remove-role/{userId}/{roleId}', [RoleController::class, 'removeRole']);
 
 /* Table Reservation (User Panel) */
 Route::get('/detail/{id}', [BookController::class, 'showDetail']);
