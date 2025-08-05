@@ -39,11 +39,14 @@ class AdminController extends Controller
 
     public function promote_user(Request $request,$id)
     {
+            $user = User::find($id);
 
-            $user=user::find($id);
+            $adminRole = \App\Models\Role::where('name', 'Admin')->first();
+            if ($adminRole && !$user->roles->contains($adminRole->id)) {
+                $user->roles()->attach($adminRole->id);
+            }
 
             $user->typeUser = 1;
-
             $user->save();
 
             return redirect()->back()->with('message', "The user $user->email has been promoted to admin !");
@@ -52,11 +55,19 @@ class AdminController extends Controller
 
     public function discard_user(Request $request,$id)
     {
+            $user = User::find($id);
 
-            $user=user::find($id);
+            $adminRole = \App\Models\Role::where('name', 'Admin')->first();
+            if ($adminRole && $user->roles->contains($adminRole->id)) {
+                $user->roles()->detach($adminRole->id);
+            }
+
+            $userRole = \App\Models\Role::where('name', 'User')->first();
+            if ($userRole && !$user->roles->contains($userRole->id)) {
+                $user->roles()->attach($userRole->id);
+            }
 
             $user->typeUser = 0;
-
             $user->save();
 
             return redirect()->back()->with('message', "The user $user->email has been discarded to user !");
