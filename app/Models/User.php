@@ -38,4 +38,19 @@ class User extends Authenticatable
     {
         return $this->hasMany(Faq_Items::class, 'user_id');
     }
+
+    public function roles()
+    {
+        return $this->belongsToMany(Role::class, 'user_roles');
+    }
+
+    public function hasRole($roleName)
+    {
+        return $this->roles()->where('name', $roleName)->exists();
+    }
+
+    public function isAdmin()
+    {
+        return $this->hasRole('Admin') || $this->typeUser == '1';
+    }
 }
