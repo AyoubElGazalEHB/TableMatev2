@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\ContactNotification;
 use App\Mail\ContactReply;
+use App\Http\Requests\ContactFormRequest;
 
 class ContactController extends Controller
 {
@@ -17,7 +18,7 @@ class ContactController extends Controller
         return view('user.contact');
     }
 
-    public function add_contactform(Request $request)
+    public function add_contactform(ContactFormRequest $request)
     {
         $contact = new Contact;
         $contact->name = $request->name;

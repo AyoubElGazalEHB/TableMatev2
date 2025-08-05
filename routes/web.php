@@ -76,7 +76,7 @@ Route::get('/cancel_book/{id}', [ReservationController::class, 'cancel_book']);
 
 /* Contact Form */
 Route::get('/contact', [ContactController::class, 'contact']);
-Route::post('/add_contactform', [ContactController::class, 'add_contactform']);
+Route::post('/add_contactform', [ContactController::class, 'add_contactform'])->middleware('throttle:5,1');
 
 /* Contact Management (Admin Panel) */
 Route::get('/contact_forms', [ContactController::class, 'contact_forms']);

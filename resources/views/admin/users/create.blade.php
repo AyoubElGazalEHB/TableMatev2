@@ -121,5 +121,6 @@
     </a>
 
     @include('admin.script')
+    <script src="{{ asset('js/validation.js') }}"></script>
 </body>
 </html>

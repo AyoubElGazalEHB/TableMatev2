@@ -7,7 +7,7 @@ use App\Models\User;
 use App\Models\Role;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Validation\Rules;
+use App\Http\Requests\CreateUserRequest;
 
 class CreateUserController extends Controller
 {
@@ -21,20 +21,8 @@ class CreateUserController extends Controller
         return view('admin.users.create', compact('roles'));
     }
 
-    public function store(Request $request)
+    public function store(CreateUserRequest $request)
     {
-        if (!Auth::check() || !Auth::user()->isAdmin()) {
-            return redirect('login')->with('message', 'Unauthorized access');
-        }
-
-        $request->validate([
-            'name' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255|unique:users',
-            'password' => ['required', 'confirmed', Rules\Password::defaults()],
-            'roles' => 'array',
-            'roles.*' => 'exists:roles,id'
-        ]);
-
         $adminRoleId = Role::where('name', 'Admin')->first()?->id;
         $isAdmin = in_array($adminRoleId, $request->roles ?? []);
 

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Table;
 use App\Models\Reservation;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Requests\ReservationRequest;
 
 
 
@@ -19,7 +20,7 @@ class BookController extends Controller
         return view('user.detail',compact('table'));
     }
 
-    public function reservation(Request $request)
+    public function reservation(ReservationRequest $request)
     {
         $data= new reservation;
 

@@ -172,5 +172,6 @@ x
         </form>
     </div>
     <script defer async src="./assets/js/your-custom-scripts.js"></script>
+    <script src="{{ asset('js/validation.js') }}"></script></script>
 </body>
 </html>
