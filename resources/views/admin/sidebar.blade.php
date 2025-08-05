@@ -44,6 +44,14 @@
         </a>
     </li>
 
+    <!-- Nav Item - role management -->
+    <li class="nav-item">
+        <a class="nav-link" href="{{url('roles')}}">
+            <i class="fas fa-fw fa-users-cog"></i>
+            <span>Role Management</span>
+        </a>
+    </li>
+
     <!-- Nav Item - Contact forms -->
     <li class="nav-item">
         <a class="nav-link" href="{{url('contact_forms')}}">

@@ -74,11 +74,24 @@ x
                     <td>{{$users->email}}</td>
                     <td>
                         @if($users->typeUser == 1)
-                            Admin
+                            <span class="badge badge-danger">Admin</span>
                         @else
-                            User
+                            <span class="badge badge-secondary">User</span>
                         @endif
-                    </td>                    
+
+                        @if($users->roles && $users->roles->count() > 0)
+                            <br><small class="text-muted">Roles:</small><br>
+                            @foreach($users->roles as $role)
+                                @if($role->name == 'Admin')
+                                    <span class="badge badge-danger badge-sm">{{ $role->name }}</span>
+                                @elseif($role->name == 'Moderator')
+                                    <span class="badge badge-warning badge-sm">{{ $role->name }}</span>
+                                @else
+                                    <span class="badge badge-secondary badge-sm">{{ $role->name }}</span>
+                                @endif
+                            @endforeach
+                        @endif
+                    </td>
                     <td>
                         <a href="{{url('promote_user',$users->id)}}">
                         <button class="btn btn-success">Promote</button>
