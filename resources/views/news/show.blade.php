@@ -163,6 +163,98 @@
             font-style: italic;
         }
 
+        .comment-form {
+            margin-top: 40px;
+            padding-top: 30px;
+            border-top: 2px solid #f0f0f0;
+        }
+
+        .comment-form h3 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: #333;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+            box-sizing: border-box;
+            font-family: inherit;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: #f44336;
+        }
+
+        .form-control.textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        .comment-submit-btn {
+            background: #f44336;
+            color: white;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .comment-submit-btn:hover {
+            background: #d32f2f;
+        }
+
+        .login-prompt {
+            text-align: center;
+            padding: 30px;
+            background: #f9f9f9;
+            border-radius: 8px;
+            margin-top: 30px;
+        }
+
+        .login-prompt p {
+            margin-bottom: 15px;
+            color: #666;
+        }
+
+        .login-link {
+            color: #f44336;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .login-link:hover {
+            text-decoration: underline;
+        }
+
+        .success-message {
+            background: #4caf50;
+            color: white;
+            padding: 15px 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+
         @media (max-width: 768px) {
             .article-title {
                 font-size: 2rem;
@@ -203,6 +295,13 @@
 
         <div class="comments-section">
             <h2 class="comments-title">Comments ({{ $newsItem->comments->count() }})</h2>
+
+            @if(session('message'))
+                <div class="success-message">
+                    {{ session('message') }}
+                </div>
+            @endif
+
             @forelse($newsItem->comments as $comment)
                 <div class="comment">
                     <div class="comment-author">
@@ -223,6 +322,32 @@
                     <p>No comments yet. Be the first to share your thoughts!</p>
                 </div>
             @endforelse
+
+            <!-- Comment Form -->
+            @auth
+                <div class="comment-form">
+                    <h3>Leave a Comment</h3>
+                    <form action="{{ route('news.comment', $newsItem->id) }}" method="POST">
+                        @csrf
+                        <div class="form-group">
+                            <label for="comment">Your Comment</label>
+                            <textarea name="comment" id="comment" class="form-control textarea"
+                                      placeholder="Share your thoughts about this article..."
+                                      required minlength="3" maxlength="1000">{{ old('comment') }}</textarea>
+                            @error('comment')
+                                <small style="color: #f44336; margin-top: 5px; display: block;">{{ $message }}</small>
+                            @enderror
+                        </div>
+                        <button type="submit" class="comment-submit-btn">Post Comment</button>
+                    </form>
+                </div>
+            @else
+                <div class="login-prompt">
+                    <p>Want to join the conversation?</p>
+                    <a href="{{ route('login') }}" class="login-link">Login</a> or
+                    <a href="{{ route('register') }}" class="login-link">Register</a> to leave a comment.
+                </div>
+            @endauth
         </div>
     </div>
 
@@ -268,5 +393,6 @@
             </nav>
         </div>
     </footer>
+    <script src="{{ asset('js/validation.js') }}"></script>
 </body>
 </html>

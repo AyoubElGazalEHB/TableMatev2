@@ -106,6 +106,9 @@ Route::post('/changing_category/{id}', [FAQCategoryController::class, 'changing_
 /* User Routes for News */
 Route::get('/news', [UserNewsController::class, 'index'])->name('news.index');
 Route::get('/news/{id}', [UserNewsController::class, 'show'])->name('news.show');
+Route::post('/news/{id}/comment', [UserNewsController::class, 'storeComment'])->name('news.comment')->middleware('auth');
+
+
 
 /* Admin Routes for News Management */
 Route::middleware(['auth', 'admin'])->group(function () {

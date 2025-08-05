@@ -141,9 +141,74 @@ class DatabaseSeeder extends Seeder
             ['id' => 6, 'news_id' => 3, 'user_id' => 3, 'name' => 'Marco Rodriguez', 'comment' => 'Winter menus are always my favorite! The seasonal ingredients make such a difference in flavor.', 'created_at' => now(), 'updated_at' => now()],
         ]);
 
-        // Tables
+        // Tables with realistic data
         DB::table('tables')->insertOrIgnore([
-            ['id' => 1, 'image' => 'table1.jpg', 'tableNumber' => 101, 'persons' => 4, 'description' => 'Simple table for a small family.', 'seatingArea' => 'Indoor', 'price' => 50.00, 'created_at' => now(), 'updated_at' => now()],
+            [
+                'id' => 1,
+                'image' => 'table1.jpg',
+                'tableNumber' => 101,
+                'persons' => 2,
+                'description' => 'Intimate table for two with a romantic ambiance. Perfect for date nights and special occasions.',
+                'seatingArea' => 'Indoor',
+                'price' => 75.00,
+                'created_at' => now(),
+                'updated_at' => now()
+            ],
+            [
+                'id' => 2,
+                'image' => 'table2.jpg',
+                'tableNumber' => 102,
+                'persons' => 4,
+                'description' => 'Comfortable family table with excellent service. Ideal for small gatherings and business dinners.',
+                'seatingArea' => 'Indoor',
+                'price' => 120.00,
+                'created_at' => now(),
+                'updated_at' => now()
+            ],
+            [
+                'id' => 3,
+                'image' => 'table3.jpg',
+                'tableNumber' => 201,
+                'persons' => 6,
+                'description' => 'Spacious table for larger groups. Features premium seating with panoramic city views.',
+                'seatingArea' => 'Indoor',
+                'price' => 180.00,
+                'created_at' => now(),
+                'updated_at' => now()
+            ],
+            [
+                'id' => 4,
+                'image' => 'table4.jpg',
+                'tableNumber' => 301,
+                'persons' => 8,
+                'description' => 'Exclusive VIP table for special celebrations. Includes dedicated service and premium amenities.',
+                'seatingArea' => 'Private Dining',
+                'price' => 250.00,
+                'created_at' => now(),
+                'updated_at' => now()
+            ],
+            [
+                'id' => 5,
+                'image' => 'table5.jpg',
+                'tableNumber' => 401,
+                'persons' => 3,
+                'description' => 'Cozy corner table with artistic decor. Perfect for intimate conversations and wine tastings.',
+                'seatingArea' => 'Indoor',
+                'price' => 95.00,
+                'created_at' => now(),
+                'updated_at' => now()
+            ],
+            [
+                'id' => 6,
+                'image' => 'table6.jpg',
+                'tableNumber' => 501,
+                'persons' => 10,
+                'description' => 'Grand banquet table for large celebrations. Features elegant setup and premium location.',
+                'seatingArea' => 'Banquet Hall',
+                'price' => 350.00,
+                'created_at' => now(),
+                'updated_at' => now()
+            ]
         ]);
 
         // Reservations

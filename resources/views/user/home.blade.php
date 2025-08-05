@@ -21,13 +21,99 @@
        .jumbotron-container {
            display: flex;
            justify-content: space-between;
-           padding: 50px;
-           background-color: #f44336;
+           align-items: center;
+           padding: 80px 50px;
+           background: linear-gradient(135deg, rgba(244, 67, 54, 0.9) 0%, rgba(211, 47, 47, 0.9) 100%),
+                       url('https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80') center/cover;
            color: #fff;
+           min-height: 600px;
+           position: relative;
+       }
+
+       .jumbotron-container::before {
+           content: '';
+           position: absolute;
+           top: 0;
+           left: 0;
+           right: 0;
+           bottom: 0;
+           background: rgba(0, 0, 0, 0.3);
+           z-index: 1;
+       }
+
+       .jumbotron-left,
+       .jumbotron-right {
+           position: relative;
+           z-index: 2;
+       }
+       .jumbotron-left {
+           flex: 1;
+           max-width: 600px;
        }
        .jumbotron-header {
+           font-size: 3.2rem;
+           line-height: 1.2;
+           font-weight: 700;
+           margin-bottom: 20px;
+       }
+       .jumbotron-text {
+           font-size: 1.3rem;
+           line-height: 1.6;
+           opacity: 0.9;
+           margin-bottom: 30px;
+       }
+       .jumbotron-right {
+           flex: 1;
+           display: flex;
+           justify-content: center;
+           align-items: center;
+       }
+       .hero-stats {
+           display: grid;
+           grid-template-columns: repeat(2, 1fr);
+           gap: 30px;
+           background: rgba(255,255,255,0.15);
+           padding: 40px;
+           border-radius: 12px;
+           backdrop-filter: blur(15px);
+           border: 1px solid rgba(255,255,255,0.2);
+           box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+       }
+       .stat-item {
+           text-align: center;
+       }
+       .stat-number {
            font-size: 2.5rem;
-           line-height: 1.5;
+           font-weight: 700;
+           display: block;
+           margin-bottom: 5px;
+       }
+       .stat-label {
+           font-size: 0.9rem;
+           opacity: 0.8;
+       }
+       @media (max-width: 768px) {
+           .jumbotron-container {
+               flex-direction: column;
+               padding: 60px 20px;
+               text-align: center;
+               min-height: 500px;
+           }
+           .jumbotron-header {
+               font-size: 2.5rem;
+           }
+           .jumbotron-text {
+               font-size: 1.1rem;
+           }
+           .hero-stats {
+               margin-top: 40px;
+               padding: 30px;
+               grid-template-columns: 1fr 1fr;
+               gap: 20px;
+           }
+           .stat-number {
+               font-size: 2rem;
+           }
        }
        .footer {
            background-color: #d32f2f;
@@ -76,12 +162,28 @@
 
    <div class="jumbotron-container">
        <div class="jumbotron-left">
-           <h2 class="jumbotron-header">Book Your Perfect Table <br> for a Memorable Dining <br> Experience.</h2>
-           <p>Reserve your spot at the best restaurants <br>
-               with just a few clicks.</p>
+           <h1 class="jumbotron-header">Book Your Perfect Table for a Memorable Dining Experience</h1>
+           <p class="jumbotron-text">Reserve your spot at the best restaurants with just a few clicks. Discover exceptional dining experiences and create unforgettable memories.</p>
        </div>
        <div class="jumbotron-right">
-           <!-- Additional content like an image or reservation form can go here -->
+           <div class="hero-stats">
+               <div class="stat-item">
+                   <span class="stat-number">10K+</span>
+                   <span class="stat-label">Reservations</span>
+               </div>
+               <div class="stat-item">
+                   <span class="stat-number">150+</span>
+                   <span class="stat-label">Restaurants</span>
+               </div>
+               <div class="stat-item">
+                   <span class="stat-number">5K+</span>
+                   <span class="stat-label">Happy Customers</span>
+               </div>
+               <div class="stat-item">
+                   <span class="stat-number">4.9★</span>
+                   <span class="stat-label">Average Rating</span>
+               </div>
+           </div>
        </div>
    </div>
 
