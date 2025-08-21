@@ -13,7 +13,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // Users with realistic profiles
+        // Users with realistic profiles and profile photos
         DB::table('users')->insertOrIgnore([
             [
                 'id' => 1,
@@ -23,6 +23,7 @@ class DatabaseSeeder extends Seeder
                 'typeUser' => '1',
                 'aboutMe' => 'TableMate administrator with a passion for great dining experiences and customer service.',
                 'birthday' => '1990-05-15',
+                'profile_photo_path' => 'profile-photos/admin.jpg',
                 'created_at' => now(),
                 'updated_at' => now(),
             ],
@@ -34,6 +35,7 @@ class DatabaseSeeder extends Seeder
                 'typeUser' => '0',
                 'aboutMe' => 'Food enthusiast and restaurant explorer. Love trying new cuisines and sharing experiences!',
                 'birthday' => '1995-08-22',
+                'profile_photo_path' => 'profile-photos/sarah.jpg',
                 'created_at' => now(),
                 'updated_at' => now(),
             ],
@@ -45,6 +47,7 @@ class DatabaseSeeder extends Seeder
                 'typeUser' => '0',
                 'aboutMe' => 'Professional chef and culinary artist. Always looking for the perfect dining experience.',
                 'birthday' => '1988-12-03',
+                'profile_photo_path' => 'profile-photos/marco.jpg',
                 'created_at' => now(),
                 'updated_at' => now(),
             ],
@@ -56,6 +59,7 @@ class DatabaseSeeder extends Seeder
                 'typeUser' => '0',
                 'aboutMe' => 'Travel blogger specializing in food and restaurant reviews. Brussels local!',
                 'birthday' => '1992-03-18',
+                'profile_photo_path' => 'profile-photos/emma.jpg',
                 'created_at' => now(),
                 'updated_at' => now(),
             ],
@@ -67,6 +71,7 @@ class DatabaseSeeder extends Seeder
                 'typeUser' => '0',
                 'aboutMe' => 'Local foodie and TableMate regular. Love sharing restaurant recommendations with friends!',
                 'birthday' => '1985-11-07',
+                'profile_photo_path' => 'profile-photos/david.jpg',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]
